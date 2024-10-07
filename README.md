@@ -1,19 +1,10 @@
 # Taller de Git 
 
-## Pasos Seguidos
 
-### 1. Configuración Inicial
-Primero, configuré mi nombre y correo para Git y creé un nuevo repositorio local:
-```bash
-git config --global user.name "Mi Nombre"
-git config --global user.email "miemail@correo.com"
-git init nombre-del-proyecto
-
-```
-
-### 2. Creación de la Rama feature y Commits
+### 1. Creación de la Rama feature y Commits
 Creé una nueva rama llamada feature y realicé tres commits con cambios incrementales en el archivo archivo.txt
 ```bash
+git init trabajo_git
 git checkout -b feature
 echo "Texto inicial" > archivo.txt
 git add archivo.txt
@@ -26,7 +17,7 @@ echo "Otro cambio en feature" >> archivo.txt
 git commit -am "Tercer commit en feature"
 
 ```
-### 3. Merge y Rebase
+### 2. Merge y Rebase
 Realicé un merge tradicional y un rebase de la rama feature en la rama master:
 ```bash
 git checkout master
@@ -38,7 +29,7 @@ git rebase feature
 
 
 ```
-### 4. Uso de Cherry-pick y Reflog
+### 3. Uso de Cherry-pick y Reflog
 Creé una rama hotfix para realizar una corrección urgente y utilicé cherry-pick para aplicar este cambio en master:
 ```bash
 git checkout -b hotfix
@@ -49,7 +40,7 @@ git cherry-pick hotfix
 
 
 ```
-### 5. Gestión de Conflictos
+### 4. Gestión de Conflictos
 Provocamos un conflicto intencionalmente modificando el mismo archivo (conflicto.txt) en las ramas feature y master. Luego resolví el conflicto manualmente:
 ```bash
 git checkout feature
