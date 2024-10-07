@@ -1,7 +1,4 @@
-# Taller de Git para Desarrollo de Software
-
-## Objetivo
-El objetivo de este taller fue aprender a utilizar comandos y herramientas intermedias de Git, tales como ramas, merge, rebase, cherry-pick, reflog, y la gestión de conflictos. A través de este proceso, desarrollé una mejor comprensión de la gestión de versiones y la resolución de problemas en el flujo de trabajo colaborativo.
+# Taller de Git 
 
 ## Pasos Seguidos
 
