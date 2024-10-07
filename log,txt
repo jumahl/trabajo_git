@@ -1,0 +1,158 @@
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop
+$ git init trabajo_git
+Initialized empty Git repository in C:/Users/Juan/Desktop/trabajo_git/.git/
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop
+$ cd trabajo_git
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (master)
+$ git checkout -b feature
+Switched to a new branch 'feature'
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ echo "Texto inicial" > archivo.txt
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ git add archivo.txt
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ git commit -m "Commit inicial"
+[feature (root-commit) b13c516] Commit inicial
+ 1 file changed, 1 insertion(+)
+ create mode 100644 archivo.txt
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ echo "Texto agregado en feature" >> archivo.txt
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ git commit -am "Segundo commit en feature"
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+[feature fb48355] Segundo commit en feature
+ 1 file changed, 1 insertion(+)
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ echo "Otro cambio en feature" >> archivo.txt
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ git commit -am "Tercer commit en feature"
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+[feature ebf5b8a] Tercer commit en feature
+ 1 file changed, 1 insertion(+)
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ git checkout master
+error: pathspec 'master' did not match any file(s) known to git
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ git merge feature
+Already up to date.
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ git reset --hard HEAD~1
+HEAD is now at fb48355 Segundo commit en feature
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ git rebase feature
+Current branch feature is up to date.
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ git checkout -b hotfix
+Switched to a new branch 'hotfix'
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (hotfix)
+$ echo "Corrección urgente" >> archivo.txt
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (hotfix)
+$ git commit -am "Hotfix"
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+[hotfix 38e428c] Hotfix
+ 1 file changed, 1 insertion(+)
+
+ Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (hotfix)
+$ git checkout master
+error: pathspec 'master' did not match any file(s) known to git
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (hotfix)
+$ git cherry-pick hotfix
+The previous cherry-pick is now empty, possibly due to conflict resolution.
+If you wish to commit it anyway, use:
+
+    git commit --allow-empty
+
+Otherwise, please use 'git cherry-pick --skip'
+On branch hotfix
+You are currently cherry-picking commit 38e428c.
+  (all conflicts fixed: run "git cherry-pick --continue")
+  (use "git cherry-pick --skip" to skip this patch)
+  (use "git cherry-pick --abort" to cancel the cherry-pick operation)
+
+nothing to commit, working tree clean
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (hotfix|CHERRY-PICKING)
+$ git reflog
+38e428c (HEAD -> hotfix) HEAD@{0}: commit: Hotfix
+fb48355 (feature) HEAD@{1}: checkout: moving from feature to hotfix
+fb48355 (feature) HEAD@{2}: reset: moving to HEAD~1
+ebf5b8a HEAD@{3}: commit: Tercer commit en feature
+fb48355 (feature) HEAD@{4}: commit: Segundo commit en feature
+b13c516 HEAD@{5}: commit (initial): Commit inicial
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (hotfix|CHERRY-PICKING)
+$ git checkout fb48355
+Note: switching to 'fb48355'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at fb48355 Segundo commit en feature
+warning: cancelling a cherry picking in progress
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git ((fb48355...))
+$ git checkout 38e428c
+Previous HEAD position was fb48355 Segundo commit en feature
+HEAD is now at 38e428c Hotfix
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git ((38e428c...))
+$ git checkout feature
+Previous HEAD position was 38e428c Hotfix
+Switched to branch 'feature'
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ git branch
+* feature
+  hotfix
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (feature)
+$ git checkout -b master
+Switched to a new branch 'master'
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (master)
+$ git add conflicto.txt
+warning: in the working copy of 'conflicto.txt', LF will be replaced by CRLF the next time Git touches it
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (master)
+$ git commit -am "Cambio en feature"
+[master a168b9c] Cambio en feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 conflicto.txt
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (master)
+$ git checkout master
+Already on 'master'
+
+Juan@LAPTOP-HP7T0PGI MINGW64 ~/desktop/trabajo_git (master)
+$ git merge feature
+Already up to date.
